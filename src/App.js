@@ -7,6 +7,9 @@ import './components/Todo.css';
 
 
 
+
+
+
 const tasks = [];
 
 class App extends React.Component {
@@ -52,9 +55,8 @@ class App extends React.Component {
     this.setState({
       tasks: this.state.tasks.filter(task => task.completed === false)})  
     };
-  
-  
-  
+
+
   
   render() {
     return (
@@ -64,10 +66,21 @@ class App extends React.Component {
           tasks={this.state.tasks}
           toggleCompleted={this.toggleCompleted}
         />
-        <TodoForm clearCompleted={this.clearCompleted} addTodo={this.addTodo}/>
+        <TodoForm tasks={tasks} clearCompleted={this.clearCompleted} addTodo={this.addTodo}/>
       </div>
     );
   }
+
+  storage = window.localStorage.setItem('tasks', JSON.stringify(tasks));
+
+  localStorage = () => {
+
+  }
+
+
+ 
 }
+
+
 
 export default App;

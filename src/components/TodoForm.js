@@ -22,13 +22,9 @@ handleSubmit = event => {
     this.setState({
         task: ''
     });
-    
 };
 
-componentDidMount = () => {
-    const tasks = localStorage.getItem('tasks')
-    this.setState({tasks})
-}
+
 
 
 

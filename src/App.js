@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
+import SearchForm from './components/SearchForm';
 import './components/Todo.css';
 
 
@@ -56,6 +57,13 @@ class App extends React.Component {
       tasks: this.state.tasks.filter(task => task.completed === false)})  
     };
 
+    taskSearch = (query) => {
+      this.setState({
+        tasks: this.state.tasks.filter(elem => elem.task.toLowerCase().includes(query.toLowerCase()))
+      })
+    }
+  
+  
 
   
   render() {
@@ -66,16 +74,13 @@ class App extends React.Component {
           tasks={this.state.tasks}
           toggleCompleted={this.toggleCompleted}
         />
-        <TodoForm tasks={tasks} clearCompleted={this.clearCompleted} addTodo={this.addTodo}/>
+        <TodoForm tasks={this.state.tasks} clearCompleted={this.clearCompleted} addTodo={this.addTodo}/>
+        <SearchForm tasks={this.state.tasks} setState={this.setState} taskSearch={this.taskSearch}/>
       </div>
     );
   }
 
-  storage = window.localStorage.setItem('tasks', JSON.stringify(tasks));
-
-  localStorage = () => {
-
-  }
+ 
 
 
  

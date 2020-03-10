@@ -57,9 +57,9 @@ class App extends React.Component {
       tasks: this.state.tasks.filter(task => task.completed === false)})  
     };
 
-    taskSearch = (query) => {
-      this.setState({
-        tasks: this.state.tasks.filter(elem => elem.task.toLowerCase().includes(query.toLowerCase()))
+  taskSearch = (query) => {
+    this.setState({
+       tasks: this.state.tasks.filter(elem => elem.task.toLowerCase().includes(query.toLowerCase()))
       })
     }
   
